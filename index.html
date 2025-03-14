@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="ROCK PAPER SCISSORS GAME PWA" />
+    <meta name="theme-color" content="#FFEA00"/>
+    <link rel="icon" type="image/png" href="assets/icons/chrome/chrome-favicon-16-16.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Zilla+Slab+Highlight:wght@400;700&family=Zilla+Slab:ital@0;1&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="apple-touch-icon" href="assets/icons/android/android-launchericon-192-192.png" />
+    <link rel="manifest" href="manifest.json" />
+    <title>ROCK PAPER SCISSORS GAME!</title>
+</head>
+
+<body>
+<h1>ROCK PAPER SCISSORS</h1>
+
+<div class="select">
+
+    <h3>Please select:</h3>
+
+    <img data-option="rock" src="assets/rock.png" alt="" title="Kamień">
+
+    <img data-option="paper" class="first" src="assets/paper.png" alt="" title="Papier">
+
+    <img data-option="scissors" src="assets/scissors.png" alt="" title="nożyczki">
+
+</div>
+
+<div class="buttonStatus">
+    <div class="hidden loader">
+        <div class="bigSqr">
+            <div class="square first"></div>
+            <div class="square second"></div>
+            <div class="square third"></div>
+            <div class="square fourth"></div>
+        </div>
+        <div class="text">loading</div>
+    </div>
+
+    <button class="start">play!</button>
+</div>
+
+<div class="bottom-section">
+    <div class="panel-left">
+        <h3>Last game</h3>
+        <div class="lastChoice">
+            <div class="playerChoice">
+                <div>PLAYER</div>
+                <div class="choiceBox" data-summary="your-choice"></div>
+            </div>
+            <p style="font-size: 2em">VS</p>
+            <div class="aiChoice">
+                <div>COM 1</div>
+                <div class="choiceBox" data-summary="ai-choice"></div>
+            </div>
+        </div>
+        <h3><span data-summary="who-win" style="font-family: 'Press Start 2P', cursive">PLAY FIRST GAME</span></h3>
+    </div>
+
+    <div class="panel-right">
+        <h3>Scoreboard</h3>
+        <p class="wins">Wins: <span>0</span></p>
+        <p class="draws">Draws:<span>0</span></p>
+        <p class="losses">Losses:<span>0</span></p>
+        <p class="numbers">Games:<span>0</span></p>
+    </div>
+</div>
+<div class="footer">
+    <img class="githubIcon" src="assets/github_icon.png" alt="github">
+    <a class="footerLink" target="_blank" href="https://github.com/bartek2050">
+        BAGON - URRETE
+    </a>
+</div>
+<script src="main.js"></script>
+<script>
+    if("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./serviceworker.js")
+            .then((reg) => console.log("oki", reg.scope))
+            .catch((err) => console.log("error", err))
+        })
+    }
+</script>
+</body>
+
+</html>
